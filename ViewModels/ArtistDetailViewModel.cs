@@ -20,6 +20,7 @@ public class ArtistDetailViewModel : IQueryAttributable
         });
     }
 
+    // Permet de recevoir les paramètres de la navigation et de mettre à jour l'interface concernant les details de l'artiste
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.TryGetValue("Artist", out var obj) && obj is Artist a)

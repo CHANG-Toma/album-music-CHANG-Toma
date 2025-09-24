@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace Album_music___Toma.Models;
 
+// Classe Artist
 public class Artist
 {
     public string Name { get; set; } = "";

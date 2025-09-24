@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Album music - Toma")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+d199d88141c82e35d722eee7d9d179b8bf055f74")]
 [assembly: System.Reflection.AssemblyProductAttribute("Album music - Toma")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Album music - Toma")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

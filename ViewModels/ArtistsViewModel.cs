@@ -31,11 +31,13 @@ public class ArtistsViewModel : INotifyPropertyChanged
 
     public ICommand SelectArtistCommand { get; }
 
+    // Constructeur
     public ArtistsViewModel()
     {
-        LoadSeed();
-        ApplyFilter();
+        LoadSeed(); // Charger les données initiales
+        ApplyFilter(); // Appliquer le filtre initial
 
+        // Commande pour sélectionner un artiste
         SelectArtistCommand = new Command<Artist>(async artist =>
         {
             if (artist is null) return;
@@ -44,6 +46,7 @@ public class ArtistsViewModel : INotifyPropertyChanged
         });
     }
 
+    // Méthode pour charger les données pour tester l'affichage
     void LoadSeed()
     {
         Artists.Add(new Artist
@@ -85,28 +88,35 @@ public class ArtistsViewModel : INotifyPropertyChanged
         });
     }
 
+    // Méthode pour appliquer les filtres de recherche et de genre
     void ApplyFilter()
     {
         var q = Artists.AsEnumerable();
 
+        // Filtrer par texte de recherche
         if (!string.IsNullOrWhiteSpace(SearchText))
             q = q.Where(a => a.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
+        // Filtrer par genre
         if (!string.Equals(GenreFilter, "All", StringComparison.OrdinalIgnoreCase))
             q = q.Where(a => string.Equals(a.Genre, GenreFilter, StringComparison.OrdinalIgnoreCase));
 
         ReplaceCollection(FilteredArtists, q);
     }
 
+    // Méthode utilitaire pour remplacer le contenu d'une ObservableCollection
     static void ReplaceCollection<T>(ObservableCollection<T> target, System.Collections.Generic.IEnumerable<T> items)
     {
+        // Remplacer le contenu de la collection cible par les nouveaux éléments
         target.Clear();
         foreach (var it in items) target.Add(it);
     }
 
+    // Implémentation de INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
     bool Set<T>(ref T storage, T value, [CallerMemberName] string? name = null)
     {
+        // Si la valeur est la même, ne rien faire
         if (Equals(storage, value)) return false;
         storage = value;
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
