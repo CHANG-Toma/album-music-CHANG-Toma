@@ -948,3 +948,4 @@ C:\Users\hauat\source\repos\Album music - Toma\Album music - Toma\obj\Debug\net9
 C:\Users\hauat\source\repos\Album music - Toma\Album music - Toma\obj\Debug\net9.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Users\hauat\source\repos\Album music - Toma\Album music - Toma\obj\Debug\net9.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\hauat\source\repos\Album music - Toma\Album music - Toma\obj\Debug\net9.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\hauat\source\repos\Album music - Toma\Album music - Toma\obj\Debug\net9.0-android\Album music - Toma.sourcelink.json

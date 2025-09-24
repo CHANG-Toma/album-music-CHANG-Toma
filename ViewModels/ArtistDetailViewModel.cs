@@ -11,6 +11,7 @@ public class ArtistDetailViewModel : IQueryAttributable
 
     public ICommand OpenSongCommand { get; }
 
+    // Constructeur
     public ArtistDetailViewModel()
     {
         OpenSongCommand = new Command<string>(async url =>

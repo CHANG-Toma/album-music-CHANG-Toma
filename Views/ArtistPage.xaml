@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="16" Spacing="12">
-        <SearchBar Placeholder="Search artist" Text="{Binding SearchText}" />
+        <SearchBar Placeholder="Recherchez votre artiste" Text="{Binding SearchText}" />
         <Picker Title="Filter by genre"
             ItemsSource="{Binding Genres}"
             SelectedItem="{Binding GenreFilter}" />

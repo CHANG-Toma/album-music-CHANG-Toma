@@ -93,7 +93,7 @@ public class ArtistsViewModel : INotifyPropertyChanged
     {
         var q = Artists.AsEnumerable();
 
-        // Filtrer par texte de recherche
+        // Filtrer par texte
         if (!string.IsNullOrWhiteSpace(SearchText))
             q = q.Where(a => a.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
