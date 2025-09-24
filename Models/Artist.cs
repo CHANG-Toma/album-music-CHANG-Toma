@@ -1,0 +1,11 @@
+using System.Collections.Generic;
+
+namespace Album_music___Toma.Models;
+
+public class Artist
+{
+    public string Name { get; set; } = "";
+    public string PhotoUrl { get; set; } = "";
+    public string Genre { get; set; } = "";
+    public List<Album> Albums { get; set; } = new();
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    x:Class="Album_music___Toma.Views.ArtistsPage"
+    x:Name="Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:Album_music___Toma.ViewModels"
+    Title="Artists">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ArtistsViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="16" Spacing="12">
+        <SearchBar Placeholder="Search artist" Text="{Binding SearchText}" />
+        <Picker Title="Filter by genre"
+            ItemsSource="{Binding Genres}"
+            SelectedItem="{Binding GenreFilter}" />
+
+        <CollectionView ItemsSource="{Binding FilteredArtists}" SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Frame HasShadow="False" Padding="0" CornerRadius="12">
+                            <Image Aspect="AspectFill" Source="{Binding PhotoUrl}" />
+                        </Frame>
+
+                        <Button Grid.Row="1"
+                    Text="{Binding Name}"
+                    Command="{Binding BindingContext.SelectArtistCommand, Source={x:Reference Page}}"
+                    CommandParameter="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
