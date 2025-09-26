@@ -28,15 +28,29 @@ namespace Album_music_toma.ViewModels
         }
         
         public ObservableCollection<Album> Albums { get; } = new();
-        public ICommand OpenSongCommand { get; }
+        public ICommand ViewSongsCommand { get; }
 
         // Constructeur
         public ArtistDetailViewModel()
         {
-            OpenSongCommand = new Command<string>(async url =>
+            ViewSongsCommand = new Command<Album>(async album =>
             {
-                if (string.IsNullOrWhiteSpace(url)) return;
-                await Launcher.OpenAsync(url);
+                System.Diagnostics.Debug.WriteLine("=== ViewSongsCommand DÉCLENCHÉ ===");
+                System.Diagnostics.Debug.WriteLine($"Album reçu: {(album?.Title ?? "NULL")}");
+                System.Diagnostics.Debug.WriteLine($"Artist.Name: {Artist?.Name ?? "NULL"}");
+                
+                try
+                {
+                    // Navigation simple d'abord
+                    System.Diagnostics.Debug.WriteLine("Tentative de navigation vers 'songs'...");
+                    await Shell.Current.GoToAsync("songs");
+                    System.Diagnostics.Debug.WriteLine("✅ Navigation réussie vers songs");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"❌ Erreur navigation: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                }
             });
         }
 

@@ -63,3 +63,15 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Album_music_toma.Views.ArtistsPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\ArtistsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ArtistsPage.xaml
+
+[C:/Users/hauat/Desktop/Master 1/Tranformation digitale/Album musical - projet/Album-music-toma/Album-music-toma/Views/SongsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Album_music_toma.Views.SongsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SongsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SongsPage.xaml
+
+[C:/Users/hauat/Desktop/Master 1/Tranformation digitale/Album musical - projet/Album-music-toma/Album-music-toma/Views/VideoPlayerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Album_music_toma.Views.VideoPlayerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\VideoPlayerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\VideoPlayerPage.xaml
