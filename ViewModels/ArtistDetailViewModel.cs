@@ -8,7 +8,7 @@ public class ArtistDetailViewModel : IQueryAttributable
 {
     public Artist Artist { get; private set; } = new();
     public ObservableCollection<Album> Albums { get; } = new();
-
+    public ICommand SelectAlbumCommand { get; }
     public ICommand OpenSongCommand { get; }
 
     // Constructeur
@@ -18,6 +18,13 @@ public class ArtistDetailViewModel : IQueryAttributable
         {
             if (string.IsNullOrWhiteSpace(url)) return;
             await Launcher.OpenAsync(url);
+        });
+
+        SelectAlbumCommand = new Command<Album>(async album =>
+        {
+            if (album is null) return;
+            await Shell.Current.GoToAsync(nameof(Album_music___Toma.Views.AlbumDetailPage),
+                new Dictionary<string, object> { { "Album", album } });
         });
     }
 

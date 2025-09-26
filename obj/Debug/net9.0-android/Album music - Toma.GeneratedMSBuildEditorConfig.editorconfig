@@ -48,6 +48,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Album_music___Toma.Resourc
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/hauat/source/repos/Album music - Toma/Album music - Toma/Views/AlbumDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Album_music___Toma.Views.AlbumDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AlbumDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AlbumDetailPage.xaml
+
 [C:/Users/hauat/source/repos/Album music - Toma/Album music - Toma/Views/ArtistDetailPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Album_music___Toma.Views.ArtistDetailPage.xaml

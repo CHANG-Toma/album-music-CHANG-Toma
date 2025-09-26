@@ -1,0 +1,29 @@
+<ContentPage
+    x:Class="Album_music___Toma.Views.AlbumDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:Album_music___Toma.ViewModels"
+    xmlns:models="clr-namespace:Album_music___Toma.Models"
+    Title="{Binding Album.Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AlbumDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="16" Spacing="12">
+        <Image Aspect="AspectFill" HeightRequest="200"
+               Source="{Binding Album.CoverUrl}" />
+        <Label Text="{Binding Album.Title}" FontSize="24" FontAttributes="Bold" />
+        <Label Text="{Binding Album.Year}" FontSize="14" />
+
+        <CollectionView ItemsSource="{Binding Songs}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Song">
+                    <Button Text="{Binding Title}"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenSongCommand}"
+                            CommandParameter="{Binding YoutubeUrl}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

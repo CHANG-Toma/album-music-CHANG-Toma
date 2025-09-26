@@ -13,47 +13,39 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="16" Spacing="16">
-            <Grid ColumnDefinitions="120,*" ColumnSpacing="12">
-                <Frame Padding="0" CornerRadius="12" HasShadow="False" HeightRequest="120" WidthRequest="120">
-                    <Image Aspect="AspectFill" Source="{Binding Artist.PhotoUrl}" />
-                </Frame>
-                <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
-                    <Label Text="{Binding Artist.Name}" FontSize="24" FontAttributes="Bold" />
-                    <Label Text="{Binding Artist.Genre}" FontSize="14" />
-                </VerticalStackLayout>
-            </Grid>
+            <!-- Nom + photo en grand -->
+            <Image Aspect="AspectFill" HeightRequest="250"
+               Source="{Binding Artist.PhotoUrl}" />
 
+            <Label Text="{Binding Artist.Name}" FontSize="28" FontAttributes="Bold" />
+            <Label Text="{Binding Artist.Genre}" FontSize="16" />
+            <Label Text="{Binding Artist.Bio}" FontSize="14" LineBreakMode="WordWrap" />
+
+            <!-- Liste des albums -->
             <CollectionView ItemsSource="{Binding Albums}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Album">
                         <Frame Padding="12" CornerRadius="12" HasShadow="False">
-                            <VerticalStackLayout Spacing="8">
-                                <Grid ColumnDefinitions="80,*" ColumnSpacing="10">
-                                    <Image Grid.Column="0" HeightRequest="80" WidthRequest="80"
-                         Aspect="AspectFill" Source="{Binding CoverUrl}" />
-                                    <VerticalStackLayout Grid.Column="1" Spacing="4">
-                                        <Label Text="{Binding Title}" FontAttributes="Bold" />
-                                        <Label Text="{Binding Year}" FontSize="12" />
-                                    </VerticalStackLayout>
-                                </Grid>
-
-                                <Label Text="Titles:" FontSize="12" />
-                                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Songs}">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate x:DataType="models:Song">
-                                            <Button Padding="6,4"
-                              HorizontalOptions="Start"
-                              Text="{Binding Title}"
-                              Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenSongCommand}"
-                              CommandParameter="{Binding YoutubeUrl}" />
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
+                            <Grid ColumnDefinitions="80,*" ColumnSpacing="10">
+                                <Image Grid.Column="0" HeightRequest="80" WidthRequest="80"
+                                   Aspect="AspectFill" Source="{Binding CoverUrl}" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Year}" FontSize="12" />
                                 </VerticalStackLayout>
-                            </VerticalStackLayout>
+                            </Grid>
+                            <!-- 🔹 Quand on clique, on navigue vers la page AlbumDetail -->
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, 
+                                          Path=BindingContext.SelectAlbumCommand}"
+                                CommandParameter="{Binding}" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

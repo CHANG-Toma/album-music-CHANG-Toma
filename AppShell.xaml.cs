@@ -7,5 +7,10 @@ public partial class AppShell : Shell
         InitializeComponent();
         Routing.RegisterRoute(nameof(Album_music___Toma.Views.ArtistDetailPage),
                               typeof(Album_music___Toma.Views.ArtistDetailPage));
+
+        Routing.RegisterRoute(nameof(Album_music___Toma.Views.AlbumDetailPage),
+                      typeof(Album_music___Toma.Views.AlbumDetailPage));
+
+
     }
 }
