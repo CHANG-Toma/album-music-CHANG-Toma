@@ -306,3 +306,10 @@ C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Al
 C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\Album-mu.F330AFF7.Up2Date
 C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\Album-music-toma.genruntimeconfig.cache
 C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\ref\Album-music-toma.dll
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\eminem.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\acdc.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\mozart.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\ed_sheeran.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\stromae.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\celine_dion.webp
+C:\Users\hauat\Desktop\Master 1\Tranformation digitale\Album musical - projet\Album-music-toma\Album-music-toma\obj\Debug\net9.0-ios\iossimulator-x64\resizetizer\r\Resources\ariana_grande.webp

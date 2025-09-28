@@ -64,7 +64,7 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Stromae",
                 Genre = "Pop",
-                PhotoUrl = "stromae.svg",
+                PhotoUrl = "stromae.webp",
                 Bio = "Paul Van Haver, connu sous le nom de Stromae, est un chanteur, rappeur et compositeur belge. Il est reconnu pour ses textes profonds et sa musique électronique unique, mélangeant hip-hop et musique électronique. Ses chansons abordent souvent des thèmes sociaux et personnels avec une approche artistique innovante. Son style musical révolutionnaire et ses performances scéniques captivantes ont fait de lui l'un des artistes les plus influents de la scène francophone contemporaine.",
                 Albums = new List<Album> {
                     new Album { 
@@ -93,7 +93,7 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Céline Dion",
                 Genre = "Pop",
-                PhotoUrl = "celine_dion.svg",
+                PhotoUrl = "celine_dion.webp",
                 Bio = "Céline Dion est une chanteuse québécoise de renommée internationale. Avec sa voix puissante et émouvante, elle a vendu plus de 200 millions d'albums dans le monde. Elle est particulièrement connue pour ses ballades romantiques et sa performance emblématique du thème du film Titanic, 'My Heart Will Go On'.",
                 Albums = new List<Album> {
                     new Album { 
@@ -112,7 +112,7 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Ed Sheeran",
                 Genre = "Pop",
-                PhotoUrl = "ed_sheeran.svg",
+                PhotoUrl = "ed_sheeran.webp",
                 Bio = "Ed Sheeran est un auteur-compositeur-interprète britannique connu pour sa musique acoustique et ses mélodies accrocheuses. Avec sa guitare et sa voix distinctive, il a conquis le monde avec des hits comme 'Shape of You' et 'Perfect'. Il est reconnu pour son talent de parolier et sa capacité à créer des chansons intemporelles.",
                 Albums = new List<Album> {
                     new Album { 
@@ -131,7 +131,7 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "AC/DC",
                 Genre = "Rock",
-                PhotoUrl = "acdc.svg",
+                PhotoUrl = "acdc.webp",
                 Bio = "AC/DC est un groupe de rock australien formé en 1973 par les frères Malcolm et Angus Young. Le groupe est célèbre pour ses riffs de guitare électrique puissants et ses chansons énergiques. Avec des hits légendaires comme 'Highway to Hell' et 'Back in Black', AC/DC est devenu l'un des groupes de rock les plus influents de l'histoire.",
                 Albums = new List<Album> {
                     new Album { 
@@ -150,7 +150,7 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Mozart",
                 Genre = "Classique",
-                PhotoUrl = "mozart.svg",
+                PhotoUrl = "mozart.webp",
                 Bio = "Wolfgang Amadeus Mozart (1756-1791) était un compositeur autrichien de la période classique. Considéré comme l'un des plus grands génies musicaux de l'histoire, Mozart a composé plus de 600 œuvres incluant des symphonies, des concertos, des opéras et de la musique de chambre. Ses compositions comme la Symphonie n°40 et l'opéra 'La Flûte enchantée' restent des chefs-d'œuvre intemporels.",
                 Albums = new List<Album> {
                     new Album { 
@@ -169,13 +169,13 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Ariana Grande",
                 Genre = "Pop",
-                PhotoUrl = "dotnet_bot.png", // Image par défaut
+                PhotoUrl = "ariana_grande.webp",
                 Bio = "Ariana Grande est une chanteuse, compositrice et actrice américaine. Connue pour sa voix puissante de soprano et ses performances vocales impressionnantes, elle est devenue l'une des artistes pop les plus influentes de sa génération. Ses albums mélangent pop, R&B et trap avec des mélodies accrocheuses et des productions modernes.",
                 Albums = new List<Album> {
                     new Album { 
                         Title = "Thank U, Next", 
                         Year = 2019,
-                        CoverUrl = "dotnet_bot.png",
+                        CoverUrl = "falling_into_you.svg",
                         Songs = new List<Song> {
                             new Song { Title = "Thank U, Next", YoutubeUrl = "https://www.youtube.com/watch?v=gl1aHhXn1kI" },
                             new Song { Title = "7 Rings", YoutubeUrl = "https://www.youtube.com/watch?v=QYh6pY3GXGs" }
@@ -188,13 +188,13 @@ namespace Album_music_toma.ViewModels
             {
                 Name = "Eminem",
                 Genre = "Rap",
-                PhotoUrl = "dotnet_bot.png",
+                PhotoUrl = "eminem.webp",
                 Bio = "Eminem, de son vrai nom Marshall Mathers, est un rappeur, producteur et acteur américain. Considéré comme l'un des plus grands rappeurs de tous les temps, il est connu pour ses textes provocateurs, son flow technique et sa capacité à raconter des histoires complexes. Ses albums ont marqué l'histoire du hip-hop avec des hits comme 'Lose Yourself' et 'Stan'.",
                 Albums = new List<Album> {
                     new Album { 
                         Title = "The Marshall Mathers LP", 
                         Year = 2000,
-                        CoverUrl = "dotnet_bot.png",
+                        CoverUrl = "back_in_black.svg",
                         Songs = new List<Song> {
                             new Song { Title = "The Real Slim Shady", YoutubeUrl = "https://www.youtube.com/watch?v=eJO5HU_7_1w" },
                             new Song { Title = "Stan", YoutubeUrl = "https://www.youtube.com/watch?v=gOMhN-xf314" }

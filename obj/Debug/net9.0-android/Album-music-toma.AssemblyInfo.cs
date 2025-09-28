@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Album-music-toma")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4113c0719a44667cfdf8d350103a9a7aa32d631c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+07569dd03cdb0d2423dd1929d2c25b1efde0605f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Album-music-toma")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Album-music-toma")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
