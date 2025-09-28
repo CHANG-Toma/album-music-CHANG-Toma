@@ -35,21 +35,20 @@ namespace Album_music_toma.ViewModels
         {
             ViewSongsCommand = new Command<Album>(async album =>
             {
-                System.Diagnostics.Debug.WriteLine("=== ViewSongsCommand DÉCLENCHÉ ===");
-                System.Diagnostics.Debug.WriteLine($"Album reçu: {(album?.Title ?? "NULL")}");
-                System.Diagnostics.Debug.WriteLine($"Artist.Name: {Artist?.Name ?? "NULL"}");
+                if (album == null) return;
                 
                 try
                 {
-                    // Navigation simple d'abord
-                    System.Diagnostics.Debug.WriteLine("Tentative de navigation vers 'songs'...");
-                    await Shell.Current.GoToAsync("songs");
-                    System.Diagnostics.Debug.WriteLine("✅ Navigation réussie vers songs");
+                    // Navigation vers la page des chansons avec les paramètres
+                    await Shell.Current.GoToAsync("songs", new Dictionary<string, object>
+                    {
+                        { "Album", album },
+                        { "ArtistName", Artist?.Name ?? "Artiste" }
+                    });
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"❌ Erreur navigation: {ex.Message}");
-                    System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                    System.Diagnostics.Debug.WriteLine($"Erreur navigation: {ex.Message}");
                 }
             });
         }

@@ -20,7 +20,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="300" />
         </Grid.RowDefinitions>
         
         <!-- Header avec informations de l'album -->
@@ -92,10 +91,10 @@
                                        FontAttributes="Bold" 
                                        TextColor="#2c3e50"
                                        LineBreakMode="TailTruncation" />
-                                <Label Text="Cliquez pour lire" 
-                                       FontSize="12" 
-                                       TextColor="#7f8c8d"
-                                       Opacity="0.8" />
+                        <Label Text="🎵 Cliquez pour ouvrir dans YouTube" 
+                               FontSize="12" 
+                               TextColor="#7f8c8d"
+                               Opacity="0.8" />
                             </VerticalStackLayout>
                             
                             <!-- Bouton de lecture amélioré -->
@@ -120,124 +119,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <!-- Zone vidéo améliorée -->
-        <Frame Grid.Row="2" 
-               BackgroundColor="#1a1a1a" 
-               CornerRadius="20,20,0,0" 
-               HasShadow="True" 
-               Margin="0,0,0,0"
-               Padding="0">
-            <Frame.Shadow>
-                <Shadow Brush="Black" Offset="0,-5" Radius="15" />
-            </Frame.Shadow>
-            
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                
-                <!-- Header de la zone vidéo avec gradient -->
-                <Frame Grid.Row="0" 
-                       BackgroundColor="#2c3e50" 
-                       Padding="20,15"
-                       CornerRadius="20,20,0,0"
-                       HasShadow="False">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                    
-                    <!-- Icône de lecture -->
-                    <Label Grid.Column="0" 
-                           Text="🎵" 
-                           FontSize="24" 
-                           VerticalOptions="Center" 
-                           Margin="0,0,15,0" />
-                    
-                    <!-- Titre de la chanson -->
-                    <VerticalStackLayout Grid.Column="1" 
-                                        VerticalOptions="Center" 
-                                        Spacing="2">
-                        <Label Text="{Binding CurrentSongTitle, FallbackValue='Sélectionnez une chanson'}" 
-                               FontSize="18" 
-                               FontAttributes="Bold" 
-                               TextColor="White"
-                               LineBreakMode="TailTruncation" />
-                        <Label Text="Cliquez sur ▶️ pour lire" 
-                               FontSize="12" 
-                               TextColor="#bdc3c7"
-                               IsVisible="{Binding IsVideoVisible, Converter={StaticResource InvertedBoolConverter}}" />
-                    </VerticalStackLayout>
-                    
-                    <!-- Bouton de fermeture -->
-                    <Button Grid.Column="2"
-                            Text="✕"
-                            BackgroundColor="#e74c3c"
-                            TextColor="White"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            WidthRequest="35"
-                            HeightRequest="35"
-                            CornerRadius="17"
-                            Command="{Binding CloseVideoCommand}"
-                            IsVisible="{Binding IsVideoVisible}" />
-                    </Grid>
-                </Frame>
-                
-                <!-- Zone de contenu -->
-                <Grid Grid.Row="1">
-                    <!-- WebView pour la vidéo -->
-                    <WebView IsVisible="{Binding IsVideoVisible}"
-                             Source="{Binding VideoUrl}"
-                             BackgroundColor="Black"
-                             Margin="0" />
-                    
-                    <!-- Espace d'invitation amélioré -->
-                    <Grid IsVisible="{Binding IsVideoVisible, Converter={StaticResource InvertedBoolConverter}}"
-                          BackgroundColor="#34495e">
-                        <VerticalStackLayout VerticalOptions="Center" 
-                                            HorizontalOptions="Center" 
-                                            Spacing="25"
-                                            Padding="40">
-                            <!-- Icône musicale animée -->
-                            <Label Text="🎵" 
-                                   FontSize="64" 
-                                   TextColor="#ecf0f1" 
-                                   HorizontalOptions="Center"
-                                   Opacity="0.8" />
-                            
-                            <!-- Message d'invitation -->
-                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                                <Label Text="Lecteur vidéo" 
-                                       FontSize="24" 
-                                       FontAttributes="Bold" 
-                                       TextColor="White" 
-                                       HorizontalOptions="Center" />
-                                <Label Text="Sélectionnez une chanson ci-dessus" 
-                                       FontSize="16" 
-                                       TextColor="#bdc3c7" 
-                                       HorizontalOptions="Center" 
-                                       HorizontalTextAlignment="Center" />
-                                <Label Text="pour commencer la lecture" 
-                                       FontSize="16" 
-                                       TextColor="#bdc3c7" 
-                                       HorizontalOptions="Center" 
-                                       HorizontalTextAlignment="Center" />
-                            </VerticalStackLayout>
-                            
-                            <!-- Indicateur visuel -->
-                            <Label Text="⬆️" 
-                                   FontSize="32" 
-                                   TextColor="#3498db" 
-                                   HorizontalOptions="Center"
-                                   Opacity="0.6" />
-                        </VerticalStackLayout>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Frame>
     </Grid>
 </ContentPage>

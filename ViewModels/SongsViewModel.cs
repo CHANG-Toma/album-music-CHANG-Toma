@@ -34,13 +34,6 @@ namespace Album_music_toma.ViewModels
             private set => Set(ref _artistName, value); 
         }
         
-        private string _videoUrl = "";
-        public string VideoUrl 
-        { 
-            get => _videoUrl; 
-            private set => Set(ref _videoUrl, value); 
-        }
-        
         private string _currentSongTitle = "";
         public string CurrentSongTitle 
         { 
@@ -48,55 +41,35 @@ namespace Album_music_toma.ViewModels
             private set => Set(ref _currentSongTitle, value); 
         }
         
-        private bool _isVideoVisible = false;
-        public bool IsVideoVisible 
-        { 
-            get => _isVideoVisible; 
-            private set => Set(ref _isVideoVisible, value); 
-        }
-        
         public ObservableCollection<Song> Songs { get; } = new();
         public ICommand PlaySongCommand { get; }
-        public ICommand CloseVideoCommand { get; }
 
         // Constructeur
         public SongsViewModel()
         {
-            PlaySongCommand = new Command<string>(async url =>
+        PlaySongCommand = new Command<string>(async url =>
+        {
+            if (string.IsNullOrWhiteSpace(url)) return;
+            
+            try
             {
-                if (string.IsNullOrWhiteSpace(url)) return;
-                
-                try
+                // Trouver le titre de la chanson
+                var song = Songs.FirstOrDefault(s => s.YoutubeUrl == url);
+                if (song != null)
                 {
-                    // Convertir l'URL YouTube en URL d'embed et afficher la vidéo
-                    var embedUrl = ConvertToEmbedUrl(url);
-                    VideoUrl = embedUrl;
-                    IsVideoVisible = true;
-                    
-                    // Trouver le titre de la chanson
-                    var song = Songs.FirstOrDefault(s => s.YoutubeUrl == url);
-                    if (song != null)
-                    {
-                        CurrentSongTitle = $"🎵 {song.Title}";
-                    }
-                    
-                    // Attendre un peu pour que le WebView se charge
-                    await Task.Delay(500);
+                    CurrentSongTitle = $"🎵 {song.Title} - Ouvert dans YouTube";
                 }
-                catch (Exception ex)
-                {
-                    // En cas d'erreur, afficher un message d'erreur
-                    CurrentSongTitle = "❌ Erreur de chargement";
-                    System.Diagnostics.Debug.WriteLine($"Erreur lecture vidéo: {ex.Message}");
-                }
-            });
 
-            CloseVideoCommand = new Command(() =>
+                // Ouvrir directement dans le navigateur
+                await Launcher.OpenAsync(url);
+            }
+            catch (Exception ex)
             {
-                IsVideoVisible = false;
-                VideoUrl = "";
-                CurrentSongTitle = "";
-            });
+                CurrentSongTitle = "❌ Erreur d'ouverture";
+                System.Diagnostics.Debug.WriteLine($"Erreur ouverture YouTube: {ex.Message}");
+            }
+        });
+
         }
 
         // Reçoit l'objet depuis Shell
@@ -156,59 +129,6 @@ namespace Album_music_toma.ViewModels
             }
         }
 
-        private string ConvertToEmbedUrl(string youtubeUrl)
-        {
-            try
-            {
-                // Extraire l'ID de la vidéo YouTube
-                var videoId = ExtractVideoId(youtubeUrl);
-                if (!string.IsNullOrEmpty(videoId))
-                {
-                    // Créer l'URL d'embed pour lecture directe avec plus de paramètres
-                    return $"https://www.youtube.com/embed/{videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&fs=1&cc_load_policy=0&iv_load_policy=3&start=0&end=0&loop=0&playlist={videoId}";
-                }
-            }
-            catch (Exception ex)
-            {
-                // En cas d'erreur, retourner l'URL originale
-                System.Diagnostics.Debug.WriteLine($"Erreur conversion YouTube: {ex.Message}");
-            }
-            
-            return youtubeUrl;
-        }
-
-        private string ExtractVideoId(string youtubeUrl)
-        {
-            try
-            {
-                var uri = new Uri(youtubeUrl);
-                var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
-                
-                // Essayer de récupérer l'ID depuis le paramètre 'v'
-                var videoId = query["v"];
-                if (!string.IsNullOrEmpty(videoId))
-                {
-                    return videoId;
-                }
-                
-                // Si c'est un format court (youtu.be/ID)
-                if (uri.Host.Contains("youtu.be"))
-                {
-                    return uri.Segments.Last().Trim('/');
-                }
-            }
-            catch
-            {
-                // En cas d'erreur, essayer d'extraire manuellement
-                var match = System.Text.RegularExpressions.Regex.Match(youtubeUrl, @"(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)");
-                if (match.Success)
-                {
-                    return match.Groups[1].Value;
-                }
-            }
-            
-            return "";
-        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         

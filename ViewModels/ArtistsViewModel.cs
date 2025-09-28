@@ -29,8 +29,18 @@ namespace Album_music_toma.ViewModels
             set { if (Set(ref _genreFilter, value)) ApplyFilter(); }
         }
 
+        private string _yearFilter = "All";
+        public string YearFilter
+        {
+            get => _yearFilter;
+            set { if (Set(ref _yearFilter, value)) ApplyFilter(); }
+        }
+
         // Liste des genres disponibles
         public string[] Genres { get; } = new[] { "All", "Pop", "Rock", "Rap", "Classique" };
+        
+        // Liste des années disponibles
+        public string[] Years { get; } = new[] { "All", "Avant 2000", "2000-2010", "2010-2020", "Après 2020" };
 
         public ICommand SelectArtistCommand { get; }
 
@@ -55,7 +65,7 @@ namespace Album_music_toma.ViewModels
                 Name = "Stromae",
                 Genre = "Pop",
                 PhotoUrl = "stromae.svg",
-                Bio = "Paul Van Haver, connu sous le nom de Stromae, est un chanteur, rappeur et compositeur belge. Il est reconnu pour ses textes profonds et sa musique électronique unique, mélangeant hip-hop et musique électronique. Ses chansons abordent souvent des thèmes sociaux et personnels avec une approche artistique innovante.",
+                Bio = "Paul Van Haver, connu sous le nom de Stromae, est un chanteur, rappeur et compositeur belge. Il est reconnu pour ses textes profonds et sa musique électronique unique, mélangeant hip-hop et musique électronique. Ses chansons abordent souvent des thèmes sociaux et personnels avec une approche artistique innovante. Son style musical révolutionnaire et ses performances scéniques captivantes ont fait de lui l'un des artistes les plus influents de la scène francophone contemporaine.",
                 Albums = new List<Album> {
                     new Album { 
                         Title = "Racine Carrée", 
@@ -153,22 +163,75 @@ namespace Album_music_toma.ViewModels
                     }
                 }
             });
+
+            // Ajout d'artistes supplémentaires pour enrichir l'application
+            Artists.Add(new Artist
+            {
+                Name = "Ariana Grande",
+                Genre = "Pop",
+                PhotoUrl = "dotnet_bot.png", // Image par défaut
+                Bio = "Ariana Grande est une chanteuse, compositrice et actrice américaine. Connue pour sa voix puissante de soprano et ses performances vocales impressionnantes, elle est devenue l'une des artistes pop les plus influentes de sa génération. Ses albums mélangent pop, R&B et trap avec des mélodies accrocheuses et des productions modernes.",
+                Albums = new List<Album> {
+                    new Album { 
+                        Title = "Thank U, Next", 
+                        Year = 2019,
+                        CoverUrl = "dotnet_bot.png",
+                        Songs = new List<Song> {
+                            new Song { Title = "Thank U, Next", YoutubeUrl = "https://www.youtube.com/watch?v=gl1aHhXn1kI" },
+                            new Song { Title = "7 Rings", YoutubeUrl = "https://www.youtube.com/watch?v=QYh6pY3GXGs" }
+                        }
+                    }
+                }
+            });
+
+            Artists.Add(new Artist
+            {
+                Name = "Eminem",
+                Genre = "Rap",
+                PhotoUrl = "dotnet_bot.png",
+                Bio = "Eminem, de son vrai nom Marshall Mathers, est un rappeur, producteur et acteur américain. Considéré comme l'un des plus grands rappeurs de tous les temps, il est connu pour ses textes provocateurs, son flow technique et sa capacité à raconter des histoires complexes. Ses albums ont marqué l'histoire du hip-hop avec des hits comme 'Lose Yourself' et 'Stan'.",
+                Albums = new List<Album> {
+                    new Album { 
+                        Title = "The Marshall Mathers LP", 
+                        Year = 2000,
+                        CoverUrl = "dotnet_bot.png",
+                        Songs = new List<Song> {
+                            new Song { Title = "The Real Slim Shady", YoutubeUrl = "https://www.youtube.com/watch?v=eJO5HU_7_1w" },
+                            new Song { Title = "Stan", YoutubeUrl = "https://www.youtube.com/watch?v=gOMhN-xf314" }
+                        }
+                    }
+                }
+            });
         }
 
-        // Applique les filtres de recherche et de genre
+        // Applique les filtres de recherche, genre et année
         void ApplyFilter()
         {
             var q = Artists.AsEnumerable();
 
-            // si non vide, on filtre sur le nom
+            // Filtre par nom
             if (!string.IsNullOrWhiteSpace(SearchText))
                 q = q.Where(a => a.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
-            // si différent de "All", on filtre sur le genre
+            // Filtre par genre
             if (!string.Equals(GenreFilter, "All", StringComparison.OrdinalIgnoreCase))
                 q = q.Where(a => string.Equals(a.Genre, GenreFilter, StringComparison.OrdinalIgnoreCase));
 
-            // on met à jour la collection filtrée
+            // Filtre par année d'album
+            if (!string.Equals(YearFilter, "All", StringComparison.OrdinalIgnoreCase))
+            {
+                q = q.Where(a => a.Albums.Any(album => 
+                    YearFilter switch
+                    {
+                        "Avant 2000" => album.Year < 2000,
+                        "2000-2010" => album.Year >= 2000 && album.Year <= 2010,
+                        "2010-2020" => album.Year > 2010 && album.Year <= 2020,
+                        "Après 2020" => album.Year > 2020,
+                        _ => true
+                    }));
+            }
+
+            // Mise à jour de la collection filtrée
             ReplaceCollection(FilteredArtists, q);
         }
 

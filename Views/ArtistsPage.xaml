@@ -33,11 +33,21 @@
                            TextColor="Black"
                            PlaceholderColor="Gray" />
                 
-                <Picker Title="🎵 Filtrer par genre"
-                        ItemsSource="{Binding Genres}"
-                        SelectedItem="{Binding GenreFilter}"
-                        BackgroundColor="White"
-                        TextColor="Black" />
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Picker Grid.Column="0"
+                            Title="🎵 Genre"
+                            ItemsSource="{Binding Genres}"
+                            SelectedItem="{Binding GenreFilter}"
+                            BackgroundColor="White"
+                            TextColor="Black" />
+                    
+                    <Picker Grid.Column="1"
+                            Title="📅 Année"
+                            ItemsSource="{Binding Years}"
+                            SelectedItem="{Binding YearFilter}"
+                            BackgroundColor="White"
+                            TextColor="Black" />
+                </Grid>
             </VerticalStackLayout>
         </Grid>
 
